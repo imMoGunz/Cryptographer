@@ -1,9 +1,18 @@
+import java.util.Arrays;
+
 public class Language {
+    private static final char[] EN_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !,.:-?\"'".toCharArray();
 
-    public static final char[] EN_ALPHABET = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
-                'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '!', ',', '.', ':', '-', '?', '"', '\''};
+    //Allows for additional languages to be implemented.
 
-//Room for additional languages to be implemented.
+
+    public static char[] getEnAlphabet() {
+        return Arrays.copyOf(EN_ALPHABET, EN_ALPHABET.length);
+    }
+
+
+
+
 
     public class LanguageRules {
         
