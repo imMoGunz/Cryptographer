@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class MapBuilder {
 
-    public static Map<Character, Character> buildCaesarCipherMap(char[] languageArray, char key) {
+    public static Map<Character, Character> buildCaesarCipherMap(char[] languageArray, int key) {
         Map<Character, Character> caeserCipherMap = new HashMap<>();
         int length = languageArray.length;
         for (int i = 0; i < length; i++) {
