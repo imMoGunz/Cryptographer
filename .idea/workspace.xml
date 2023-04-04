@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5695155f-2431-4f51-a038-8dd6b5d19ec2" name="Changes" comment="Second Commit">
+    <list default="true" id="5695155f-2431-4f51-a038-8dd6b5d19ec2" name="Changes" comment="Third Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BruteForce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BruteForce.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cipher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InputHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Language.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OutputHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OutputHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,12 +103,20 @@
       <option name="project" value="LOCAL" />
       <updated>1680017918672</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Second Commit">
+      <created>1680398409888</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680398409888</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Second Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Second Commit" />
+    <MESSAGE value="Third Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Third Commit" />
   </component>
 </project>

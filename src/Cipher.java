@@ -10,6 +10,14 @@ public class Cipher {
         map = MapBuilder.buildCaesarCipherMap(allowedChars, key);
     }
 
+    public void setKey(int newKey){
+        if (newKey >= InputHelper.KEY_MIN && newKey <= InputHelper.KEY_MAX) {
+            this.map = MapBuilder.buildCaesarCipherMap(allowedChars, newKey);
+        } else {
+            System.out.println(InputHelper.INVALID_INPUT);
+        }
+    }
+
     public String encryptText(String textToEncrypt) {
         StringBuilder encryptedText = new StringBuilder();
 
