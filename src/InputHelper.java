@@ -28,8 +28,8 @@ public class InputHelper {
         return input;
     }
 
-    public static boolean isValidText(String text, String regex) {
-        return text.matches(regex);
+    public static boolean isInvalidText(String text, String regex) {
+        return !text.matches(regex);
     }
 
     public static String getValidText(String prompt, Language language) {
@@ -39,10 +39,10 @@ public class InputHelper {
             text = scanner.nextLine().trim();
             if (text.isEmpty()) {
                 System.out.println(OutputHelper.printTextIsEmpty());
-            } else if (!isValidText(text, language.getRegex())) {
+            } else if (isInvalidText(text, language.getRegex())) {
                 System.out.println(OutputHelper.printInvalidTextInput());
             }
-        } while (text.isEmpty() || !isValidText(text, language.getRegex()));
+        } while (text.isEmpty() || isInvalidText(text, language.getRegex()));
         return text;
     }
 
