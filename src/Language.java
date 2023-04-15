@@ -19,18 +19,18 @@ public class Language {
     }
 
     // A static map to hold all the loaded Language objects, keyed by language name
-    private static Map<String, Language> languages;
+    private static final Map<String, Language> LANGUAGES;
 
     // A static method to load all the languages from the JSON file and store them in the languages map
     static {
         try {
-            languages = FileHelper.loadLanguages("src/Languages.json");
+            LANGUAGES = FileHelper.loadLanguages("src/Languages.json");
         } catch (IOException e) {
             throw new RuntimeException("Failed to load languages: ", e);
         }
     }
     public static Map<String, Language> getLanguageMap() {
-        return languages;
+        return LANGUAGES;
     }
 
     public String getName() {

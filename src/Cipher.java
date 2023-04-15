@@ -3,16 +3,16 @@ import java.util.Map;
 public class Cipher {
 
     private Map<Character, Character> cipherMap;
-    private char[] allowedChars;
+    private final char[] ALLOWED_CHARS;
 
-    public Cipher(Map<Character, Character> cipherMap, char[] allowedChars) {
+    public Cipher(Map<Character, Character> cipherMap, char[] ALLOWED_CHARS) {
         this.cipherMap = cipherMap;
-        this.allowedChars = allowedChars.clone();
+        this.ALLOWED_CHARS = ALLOWED_CHARS.clone();
     }
 
     public void setKey(int newKey){
         if (newKey >= InputHelper.KEY_MIN && newKey <= InputHelper.KEY_MAX) {
-            cipherMap = MapBuilder.buildCaesarCipherMap(allowedChars, newKey);
+            cipherMap = MapBuilder.buildCaesarCipherMap(ALLOWED_CHARS, newKey);
         } else {
             System.out.println(OutputHelper.printInvalidIntInput());
         }
@@ -47,12 +47,7 @@ public String decryptText(String textToDecrypt) {
 }
     public Cipher getReverseCipher() {
         Map<Character, Character> reverseMap = MapBuilder.buildReverseCaesarCipherMap(cipherMap);
-        return new Cipher(reverseMap, allowedChars);
-    }
-
-
-    public char[] getAllowedChars() {
-        return allowedChars;
+        return new Cipher(reverseMap, ALLOWED_CHARS);
     }
 }
 

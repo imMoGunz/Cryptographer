@@ -23,10 +23,9 @@ public class FileHelper {
 
         // Use TypeToken to deserialize the JSON content into a map of Language objects
         Type mapType = new TypeToken<Map<String, Language>>(){}.getType();
-        Map<String, Language> languageMap = gson.fromJson(fileContent, mapType);
 
         // Return the completed languageMap
-        return languageMap;
+        return gson.fromJson(fileContent, mapType);
     }
 
     // An inner class to deserialize the Language JSON objects
