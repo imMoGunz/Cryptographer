@@ -24,7 +24,7 @@ public class FileHelper {
         // Use TypeToken to deserialize the JSON content into a map of Language objects
         Type mapType = new TypeToken<Map<String, Language>>(){}.getType();
 
-        // Return the completed languageMap
+        // Return the completed map
         return gson.fromJson(fileContent, mapType);
     }
 
@@ -42,11 +42,8 @@ public class FileHelper {
             String[] uncommonLetterCombinations = context.deserialize(json.getAsJsonObject().get("uncommonLetterCombinations"), String[].class);
             String regex = (String) map.get("regex");
 
-            // Create a new Language object with the retrieved fields
-            Language language = new Language(name, alphabet, commonWords, uncommonLetterCombinations, regex);
+            return new Language(name, alphabet, commonWords, uncommonLetterCombinations, regex);
 
-            // Return the created Language object
-            return language;
         }
     }
 }
