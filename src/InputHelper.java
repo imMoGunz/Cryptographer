@@ -1,48 +1,78 @@
+import java.util.Map;
 import java.util.Scanner;
 
 public class InputHelper {
-    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     public static final int KEY_MIN = 1;
     public static final int KEY_MAX = 9;
     private static final String KEY_RANGE = KEY_MIN + "-" + KEY_MAX;
-    public static String regex;
-    public static final String ENCRYPT_PROMPT = "Enter text to encrypt:";
-    public static final String DECRYPT_PROMPT = "Enter text to decrypt:";
-    public static final String INVALID_INPUT = "Invalid input. Please enter a number between " + KEY_RANGE + ".\n";
 
 
-    public static int getKey() {
-        int key = 0;
+    public static int getIntInput(String prompt, int min, int max) {
+        int input = 0;
         boolean validInput = false;
         do {
-            System.out.println("Enter a key (" + KEY_RANGE + "):");
-            String input = SCANNER.nextLine().trim();
-            if (!input.isEmpty() && input.matches("\\d+")) {
-                key = Integer.parseInt(input);
-                if (key >= KEY_MIN && key <= KEY_MAX) {
+            System.out.println(prompt);
+            String inputString = scanner.nextLine().trim();
+            try {
+                input = Integer.parseInt(inputString);
+                if (input >= min && input <= max) {
                     validInput = true;
                 } else {
-                    System.out.println(INVALID_INPUT);
+                    System.out.println(OutputHelper.printInvalidIntInput());
                 }
-            } else {
-                System.out.println(INVALID_INPUT);
+            } catch (NumberFormatException e) {
+                System.out.println(OutputHelper.printInvalidIntInput());
             }
         } while (!validInput);
-        return key;
+        return input;
     }
 
-    public static String getText(String prompt) {
-        System.out.println(prompt);
-        String text = SCANNER.nextLine();
-        while (text.isEmpty() || !text.matches(regex)) {
-            if (text.isEmpty()) {
-                System.out.println("Error: text cannot be empty.");
-            } else if (!text.matches(regex)) {
-                System.out.println("Error: text contains invalid characters.");
-            }
-            text = SCANNER.nextLine();
-        }
-        return text;
+    public static boolean isValidText(String text, String regex) {
+        return text.matches(regex);
+    }
 
+    public static String getValidText(String prompt, Language language) {
+        String text;
+        do {
+            System.out.println(prompt);
+            text = scanner.nextLine().trim();
+            if (text.isEmpty()) {
+                System.out.println(OutputHelper.printTextIsEmpty());
+            } else if (!isValidText(text, language.getRegex())) {
+                System.out.println(OutputHelper.printInvalidTextInput());
+            }
+        } while (text.isEmpty() || !isValidText(text, language.getRegex()));
+        return text;
+    }
+
+    public static Language getValidLanguage(Map<String, Language> languageMap) {
+        Scanner scanner = new Scanner(System.in);
+        String languageChoice = "";
+
+        while (!languageMap.containsKey(languageChoice)) {
+            System.out.println(OutputHelper.printLanguageOptions(languageMap));
+            languageChoice = scanner.nextLine().trim();
+
+            if (!languageMap.containsKey(languageChoice)) {
+                System.out.println(OutputHelper.printInvalidLanguageInput());
+            }
+        }
+
+        return languageMap.get(languageChoice);
+    }
+
+
+    public static String getKeyRange() {
+        return KEY_RANGE;
+    }
+
+    public static int getKey() {
+
+        return getIntInput("Enter a key (" + getKeyRange() + "):", KEY_MIN, KEY_MAX);
+    }
+
+    public static void closeScanner() {
+        scanner.close();
     }
 }

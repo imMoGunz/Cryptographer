@@ -13,4 +13,16 @@ public class MapBuilder {
         }
         return caeserCipherMap;
     }
+
+    public static Map<Character, Character> buildReverseCaesarCipherMap(Map<Character, Character> cipherMap) {
+        Map<Character, Character> reverseMap = new HashMap<>();
+        for (Map.Entry<Character, Character> entry : cipherMap.entrySet()) {
+            char plainChar = entry.getKey();
+            char encryptedChar = entry.getValue();
+            reverseMap.put(encryptedChar, plainChar);
+        }
+        return reverseMap;
+    }
+
+
 }

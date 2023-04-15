@@ -1,15 +1,24 @@
+
+
 public class Main {
-
-
     public static void main(String[] args) {
-        Cipher cipher = new Cipher(Language.getAlphabet("eng"), InputHelper.getKey());
-        String textToEncrypt = InputHelper.getText(InputHelper.ENCRYPT_PROMPT);
+        System.out.println(OutputHelper.printWelcomeMessage());
+        Language language = InputHelper.getValidLanguage(Language.getLanguageMap());
 
-        System.out.println("Encrypted text: " + cipher.encryptText(textToEncrypt));
-        String textToDecrypt = InputHelper.getText(InputHelper.DECRYPT_PROMPT);
-        System.out.println("Decrypted text: " + cipher.decryptText(textToDecrypt));
+        Cipher cipher = new Cipher(MapBuilder.buildCaesarCipherMap(language.getAlphabet(), InputHelper.getKey()), language.getAlphabet());
+        Cipher reverseCipher = cipher.getReverseCipher();
 
-        BruteForce.bruteForce(cipher, textToDecrypt);
+        String textToEncrypt = InputHelper.getValidText(OutputHelper.getEncryptPrompt(), language);
+        String encryptedText = cipher.encryptText(textToEncrypt);
+        System.out.println(OutputHelper.printEncryptedText(encryptedText));
 
+
+        String textToDecrypt = cipher.decryptText(InputHelper.getValidText(OutputHelper.getDecryptPrompt(), language));
+        System.out.println(OutputHelper.printDecryptedText(textToDecrypt));
+
+        BruteForce.bruteForce(reverseCipher, encryptedText, language.getCommonWords(), language.getUncommonLetterCombinations());
+
+        System.out.println(OutputHelper.printGoodbyeMessage());
+        InputHelper.closeScanner();
     }
 }

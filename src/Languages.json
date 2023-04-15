@@ -1,0 +1,45 @@
+{
+  "1":
+    {
+      "name": "English",
+      "alphabet": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !,.:-?\"'$",
+      "commonWords": ["the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "not", "on", "with",
+                      "he", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her",
+                      "she", "or", "an", "will", "my", "one", "all", "would", "there", "their", "what", "so", "up",
+                      "out", "if", "about", "who", "get", "which", "go"],
+      "uncommonLetterCombinations": ["gn", "qu", "xo", "zx", "zy", "zyg", "zyz", "xr", "vv", "hh", "jj", "kk", "qo", "qy", "vx"],
+      "regex": "^[A-Za-z\\d+\\s!,.:?$\"'-]+$"
+    },
+    "2": {
+      "name": "Spanish",
+      "alphabet": "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789 !,.:-?\"'$",
+      "commonWords": ["de", "la", "que", "el", "en", "y", "a", "los", "del", "se", "las", "por", "un", "para", "con",
+                      "no", "una", "su", "al", "lo", "como", "más", "pero", "sus", "le", "ya", "o", "este", "sí",
+                      "porque", "esta", "entre", "cuando", "muy", "sin", "sobre", "también", "me", "hasta", "hay",
+                      "donde", "quien", "desde", "todo", "nos", "durante", "todos", "uno"],
+      "uncommonLetterCombinations": ["zz", "yx", "wx", "vr", "vn", "vj", "vf", "vb", "px", "ps", "pt", "pb", "nj", "ml", "lj"],
+      "regex": "^[A-Za-z\\d+\\s!,.:?$ñÑ\"'-]+$"
+    },
+  "3": {
+    "name": "French",
+    "alphabet": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !,.:-?\"'$éèàùôûâêîç",
+    "commonWords": ["le", "la", "les", "de", "des", "du", "un", "une", "et", "ou", "en", "à", "pour", "dans", "par",
+      "sur", "avec", "chez", "sous", "entre", "après", "avant", "mais", "qui", "que", "quoi", "où",
+      "comment", "quand", "car", "donc", "alors", "puis", "lorsque", "aussi", "peut", "doit", "bien",
+      "être", "avoir", "faire", "dire", "aller", "venir", "partir"],
+    "uncommonLetterCombinations": ["ch", "gn", "ph", "rh", "sch", "th", "œ", "eu", "oi", "qu"],
+    "regex": "^[A-Za-z\\d+\\s!,.:?$éèàùôûâêîç\"'-]+$"
+  },
+  "4": {
+    "name": "German",
+    "alphabet": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !,.:-?\"'$äöüß",
+    "commonWords": ["der", "die", "das", "ein", "eine", "einer", "eines", "in", "zu", "auf", "für", "von", "mit",
+      "den", "des", "dem", "zur", "zum", "im", "aus", "über", "nach", "bei", "als", "sich", "auch",
+      "an", "um", "es", "werden", "hat", "haben", "sein", "sind", "wird", "wurde", "wurden", "müssen",
+      "können", "gut", "sehr", "mehr", "viel", "ja", "nein", "doch", "oder"],
+    "uncommonLetterCombinations": ["ch", "ck", "pf", "qu", "sch", "sp", "st", "ß"],
+    "regex": "^[A-Za-z\\d+\\s!,.:?$äöüß\"'-]+$"
+  }
+
+
+}

@@ -2,48 +2,57 @@ import java.util.Map;
 
 public class Cipher {
 
-    Map<Character, Character> map;
-    char[] allowedChars;
+    private Map<Character, Character> cipherMap;
+    private char[] allowedChars;
 
-    public Cipher(char[] allowedChars, int key) {
-        this.allowedChars = allowedChars;
-        map = MapBuilder.buildCaesarCipherMap(allowedChars, key);
+    public Cipher(Map<Character, Character> cipherMap, char[] allowedChars) {
+        this.cipherMap = cipherMap;
+        this.allowedChars = allowedChars.clone();
     }
 
     public void setKey(int newKey){
         if (newKey >= InputHelper.KEY_MIN && newKey <= InputHelper.KEY_MAX) {
-            this.map = MapBuilder.buildCaesarCipherMap(allowedChars, newKey);
+            cipherMap = MapBuilder.buildCaesarCipherMap(allowedChars, newKey);
         } else {
-            System.out.println(InputHelper.INVALID_INPUT);
+            System.out.println(OutputHelper.printInvalidIntInput());
         }
     }
 
     public String encryptText(String textToEncrypt) {
-        StringBuilder encryptedText = new StringBuilder();
+        char[] encryptedText = new char[textToEncrypt.length()];
 
         for (int i = 0; i < textToEncrypt.length(); i++) {
             char c = textToEncrypt.charAt(i);
-            encryptedText.append(map.getOrDefault(c, c));
+            encryptedText[i] = cipherMap.getOrDefault(c, c);
         }
 
-        return encryptedText.toString();
+        return new String(encryptedText);
     }
 
-    public String decryptText(String textToDecrypt) {
-        StringBuilder decryptedText = new StringBuilder();
+public String decryptText(String textToDecrypt) {
+    StringBuilder decryptedText = new StringBuilder();
 
-        for (int i = 0; i < textToDecrypt.length(); i++) {
-            char c = textToDecrypt.charAt(i);
-            char decryptedChar = c;
-            for (Map.Entry<Character, Character> entry : map.entrySet()) {
-                if (entry.getValue().equals(c)) {
-                    decryptedChar = entry.getKey();
-                    break;
-                }
+    for (int i = 0; i < textToDecrypt.length(); i++) {
+        char c = textToDecrypt.charAt(i);
+        char decryptedChar = c;
+        for (Map.Entry<Character, Character> entry : cipherMap.entrySet()) {
+            if (entry.getValue().equals(c)) {
+                decryptedChar = entry.getKey();
+                break;
             }
-            decryptedText.append(decryptedChar);
         }
-        return decryptedText.toString();
+        decryptedText.append(decryptedChar);
+    }
+    return decryptedText.toString();
+}
+    public Cipher getReverseCipher() {
+        Map<Character, Character> reverseMap = MapBuilder.buildReverseCaesarCipherMap(cipherMap);
+        return new Cipher(reverseMap, allowedChars);
+    }
+
+
+    public char[] getAllowedChars() {
+        return allowedChars;
     }
 }
 
