@@ -1,0 +1,2 @@
+This is a user text file to be used for testing purposes and confirming that the User Text file input method is working.
+Congrats if it is!

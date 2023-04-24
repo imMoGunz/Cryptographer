@@ -2,6 +2,9 @@ import java.util.Map;
 
 public class Cipher {
 
+    private static final int KEY_MIN = 1;
+    private static int keyMax = 9;
+
     private Map<Character, Character> cipherMap;
     private final char[] ALLOWED_CHARS;
 
@@ -10,14 +13,33 @@ public class Cipher {
         this.ALLOWED_CHARS = ALLOWED_CHARS.clone();
     }
 
-    public void setKey(int newKey){
-        if (newKey >= InputHelper.KEY_MIN && newKey <= InputHelper.KEY_MAX) {
-            cipherMap = MapBuilder.buildCaesarCipherMap(ALLOWED_CHARS, newKey);
-        } else {
-            System.out.println(OutputHelper.printInvalidIntInput());
-        }
+    public static int getKeyMin() {
+        return KEY_MIN;
     }
 
+    public static int getKeyMax() {
+        return keyMax;
+    }
+
+    public static void setKeyMax(int newKeyMax) {
+        keyMax = newKeyMax - 1;
+
+    }
+
+    public void setKey(int newKey){
+        if (newKey >= KEY_MIN && newKey <= keyMax) {
+            cipherMap = MapBuilder.buildCaesarCipherMap(ALLOWED_CHARS, newKey);
+        } else {
+            System.out.println(OutputHelper.getInvalidIntInput(KEY_MIN, keyMax));
+        }
+           }
+    public static int getKey(char[] alphabet) {
+        Cipher.setKeyMax(alphabet.length);
+        return InputHelper.getIntInput(OutputHelper.getKeyRange(), KEY_MIN, keyMax);
+    }
+    public static String getKeyRange() {
+        return KEY_MIN + "-" + keyMax;
+    }
     public String encryptText(String textToEncrypt) {
         char[] encryptedText = new char[textToEncrypt.length()];
 
@@ -50,4 +72,3 @@ public String decryptText(String textToDecrypt) {
         return new Cipher(reverseMap, ALLOWED_CHARS);
     }
 }
-

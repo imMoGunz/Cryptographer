@@ -3,10 +3,6 @@ import java.util.Scanner;
 
 public class InputHelper {
     private static final Scanner scanner = new Scanner(System.in);
-    public static final int KEY_MIN = 1;
-    public static final int KEY_MAX = 9;
-    private static final String KEY_RANGE = KEY_MIN + "-" + KEY_MAX;
-
 
     public static int getIntInput(String prompt, int min, int max) {
         int input = 0;
@@ -19,10 +15,10 @@ public class InputHelper {
                 if (input >= min && input <= max) {
                     validInput = true;
                 } else {
-                    System.out.println(OutputHelper.printInvalidIntInput());
+                    System.out.println(OutputHelper.getInvalidIntInput(min, max));
                 }
             } catch (NumberFormatException e) {
-                System.out.println(OutputHelper.printInvalidIntInput());
+                System.out.println(OutputHelper.getInvalidIntInput(min, max));
             }
         } while (!validInput);
         return input;
@@ -38,9 +34,9 @@ public class InputHelper {
             System.out.println(prompt);
             text = scanner.nextLine().trim();
             if (text.isEmpty()) {
-                System.out.println(OutputHelper.printTextIsEmpty());
+                System.out.println(OutputHelper.getTextIsEmpty());
             } else if (isInvalidText(text, language.getRegex())) {
-                System.out.println(OutputHelper.printInvalidTextInput());
+                System.out.println(OutputHelper.getInvalidTextInput());
             }
         } while (text.isEmpty() || isInvalidText(text, language.getRegex()));
         return text;
@@ -51,25 +47,41 @@ public class InputHelper {
         String languageChoice = "";
 
         while (!languageMap.containsKey(languageChoice)) {
-            System.out.println(OutputHelper.printLanguageOptions(languageMap));
+            System.out.println(OutputHelper.getLanguageOptions(languageMap));
             languageChoice = scanner.nextLine().trim();
 
             if (!languageMap.containsKey(languageChoice)) {
-                System.out.println(OutputHelper.printInvalidLanguageInput());
+                System.out.println(OutputHelper.getInvalidIntInput(1, languageMap.size()));
             }
         }
 
         return languageMap.get(languageChoice);
     }
 
-
-    public static String getKeyRange() {
-        return KEY_RANGE;
+    public static String getInputChoice(){
+        int min = 1;
+        int max = 3;
+        String prompt = OutputHelper.getInputChoices();
+        int choice = getIntInput(prompt, min, max);
+        return Integer.toString(choice);
     }
 
-    public static int getKey() {
+    public static String getUserTxtFilePath() {
+        System.out.println(OutputHelper.getUserTextFilePathPrompt());
+        String filePath = scanner.nextLine().trim();
+        while (!FileHelper.isValidTextFile(filePath)) {
+            System.out.println("The specified file path is invalid. Please try again:");
+            filePath = scanner.nextLine().trim();
+        }
+        return filePath;
+    }
 
-        return getIntInput("Enter a key (" + getKeyRange() + "):", KEY_MIN, KEY_MAX);
+    public static String getDecryptionChoice() {
+        int min = 1;
+        int max = 2;
+        String prompt = OutputHelper.getDecryptionChoices();
+        int choice = getIntInput(prompt, min, max);
+        return Integer.toString(choice);
     }
 
     public static void closeScanner() {

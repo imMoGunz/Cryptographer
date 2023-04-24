@@ -3,6 +3,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
@@ -10,6 +11,30 @@ import java.nio.file.Path;
 import java.util.Map;
 
 public class FileHelper {
+
+    private static final String LANGUAGE_FILE_PATH = "src/Files/Languages.json";
+    private static final String DEFAULT_TXT_FILE_PATH = "src/Files/textToEncrypt.txt";
+
+    public static String getLanguageFilePath() {
+        return LANGUAGE_FILE_PATH;
+    }
+
+    public static String getDefaultTxtFilePath() {
+        return DEFAULT_TXT_FILE_PATH;
+    }
+
+    public static boolean isValidTextFile(String filePath) {
+        return new File(filePath).isFile() && filePath.endsWith(".txt");
+    }
+
+    public static String readFile(String filePath) throws IOException {
+        return Files.readString(Path.of(filePath));
+    }
+
+    // A public static method to write encrypted text to a file
+    public static void writeFile(String filePath, String encryptedText) throws IOException {
+        Files.writeString(Path.of(filePath), encryptedText);
+    }
 
     // A public static method to load a JSON file containing Language objects into a Map
     public static Map<String, Language> loadLanguages(String filePath) throws IOException {
@@ -22,7 +47,8 @@ public class FileHelper {
                 .create();
 
         // Use TypeToken to deserialize the JSON content into a map of Language objects
-        Type mapType = new TypeToken<Map<String, Language>>(){}.getType();
+        Type mapType = new TypeToken<Map<String, Language>>() {
+        }.getType();
 
         // Return the completed map
         return gson.fromJson(fileContent, mapType);
@@ -39,10 +65,10 @@ public class FileHelper {
             String name = (String) map.get("name");
             String alphabet = (String) map.get("alphabet");
             String[] commonWords = context.deserialize(json.getAsJsonObject().get("commonWords"), String[].class);
-            String[] uncommonLetterCombinations = context.deserialize(json.getAsJsonObject().get("uncommonLetterCombinations"), String[].class);
+            String[] uncommonLetterCombos = context.deserialize(json.getAsJsonObject().get("uncommonLetterCombos"), String[].class);
             String regex = (String) map.get("regex");
 
-            return new Language(name, alphabet, commonWords, uncommonLetterCombinations, regex);
+            return new Language(name, alphabet, commonWords, uncommonLetterCombos, regex);
 
         }
     }
