@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Map;
 
 public class OutputHelper {
@@ -43,8 +44,8 @@ public class OutputHelper {
         return "Failed to load languages: ";
     }
 
-    public static String getLanguageOptions(Map<String, Language> languageMap) {
-        return "Please enter number of desired language:\n" + Language.getLanguageOptions(languageMap);
+    public static String getLanguageOptions(List<Language> languageList) {
+        return "Please enter number of desired language:\n" + Language.getLanguageOptions(languageList);
     }
 
     public static String getTextIsEmpty() {
@@ -62,7 +63,7 @@ public class OutputHelper {
     public static String getDecryptionChoices() {
         String method1 = "1: Keyed Decryption";
         String method2 = "2: Brute Force";
-        String decryptionMethods = method1 +"\n" + method2;
+        String decryptionMethods = method1 + "\n" + method2;
         return "Enter the number of desired decryption method:\n" + decryptionMethods;
     }
 }

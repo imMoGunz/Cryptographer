@@ -4,9 +4,9 @@ public class Controller {
     private static final String CIPHER_TEXT_PATH = "src/Files/ciphertext.txt";
 
     public void run() throws IOException {
-        System.out.println(OutputHelper.getWelcomeMessage());
+        //System.out.println(OutputHelper.getWelcomeMessage());
 
-        Language language = InputHelper.getValidLanguage(Language.getLanguageMap());
+        Language language = InputHelper.getValidLanguage(Language.getLanguageList());
         char[] alphabet = language.getAlphabet();
         int key = Cipher.getKey(alphabet);
 

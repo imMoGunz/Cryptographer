@@ -18,8 +18,8 @@ public class Language {
         this.regex = regex;
     }
 
-    // A static map to hold all the loaded Language objects, keyed by language name
-    private static final Map<String, Language> LANGUAGES;
+    // A static list to hold all the loaded Language objects
+    private static final List<Language> LANGUAGES;
 
     // A static method to load all the languages from the JSON file and store them in the languages map
     static {
@@ -30,22 +30,23 @@ public class Language {
         }
     }
 
-    public static Map<String, Language> getLanguageMap() {
+    public static List<Language> getLanguageList() {
         return LANGUAGES;
     }
 
-    // This method returns a string of language options with their corresponding number index for user selection.
-    public static String getLanguageOptions(Map<String, Language> languageMap) {
+    // This method returns a string of language options.
+    public static String getLanguageOptions(List<Language> languageList) {
         StringBuilder stringBuilder = new StringBuilder();
         int i = 1;
-        for (Map.Entry<String, Language> entry : languageMap.entrySet()) {
-            stringBuilder.append(i++).append(": ").append(entry.getValue().getName());
-            if (i <= languageMap.size()) {
+        for (Language language : languageList) {
+            stringBuilder.append(i++).append(": ").append(language.getName());
+            if (i <= languageList.size()) {
                 stringBuilder.append("\n");
             }
         }
         return stringBuilder.toString();
     }
+
 
     public String getName() {
         return name;

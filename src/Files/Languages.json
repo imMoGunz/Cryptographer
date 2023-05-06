@@ -1,5 +1,5 @@
+[
 {
-  "1": {
       "name": "English",
       "alphabet": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !,.:-?\"'$",
       "commonWords": ["the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "not", "on", "with",
@@ -9,7 +9,7 @@
       "uncommonLetterCombos": ["gn", "qu", "xo", "zx", "zy", "zyg", "zyz", "xr", "vv", "hh", "jj", "kk", "qo", "qy", "vx"],
       "regex": "^[A-Za-z\\d+\\s!,.:?$\"'-]+$"
     },
-    "2": {
+    {
       "name": "Spanish",
       "alphabet": "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789 !,.:-?\"'$",
       "commonWords": ["de", "la", "que", "el", "en", "y", "a", "los", "del", "se", "las", "por", "un", "para", "con",
@@ -19,7 +19,7 @@
       "uncommonLetterCombos": ["zz", "yx", "wx", "vr", "vn", "vj", "vf", "vb", "px", "ps", "pt", "pb", "nj", "ml", "lj"],
       "regex": "^[A-Za-z\\d+\\s!,.:?$ñÑ\"'-]+$"
     },
-  "3": {
+  {
     "name": "French",
     "alphabet": "abcdefghijklmnopqrstuvwxyzéèàùôûâêîçABCDEFGHIJKLMNOPQRSTUVWXYZÉÈÀÙÔÛÂÊÎÇ0123456789 !,.:-?\"'$",
     "commonWords": ["le", "la", "les", "de", "des", "du", "un", "une", "et", "ou", "en", "à", "pour", "dans", "par",
@@ -29,7 +29,7 @@
     "uncommonLetterCombos": ["ch", "gn", "ph", "rh", "sch", "th", "œ", "eu", "oi", "qu"],
     "regex": "^[A-Za-z\\d+\\s!,.:?€éèàùôûâêîçÉÈÀÙÔÛÂÊÎÇ\"'-]+$"
   },
-  "4": {
+  {
     "name": "German",
     "alphabet": "abcdefghijklmnopqrstuvwxyzäöüABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜß0123456789 !,.:-?\"'$",
     "commonWords": ["der", "die", "das", "ein", "eine", "einer", "eines", "in", "zu", "auf", "für", "von", "mit",
@@ -39,4 +39,4 @@
     "uncommonLetterCombos": ["ch", "ck", "pf", "qu", "sch", "sp", "st", "ß"],
     "regex": "^[A-Za-z\\d+\\s!,.:?€äöüÄÖÜß\"'-]+$"
   }
-}
+]

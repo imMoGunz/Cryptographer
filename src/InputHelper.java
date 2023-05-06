@@ -1,4 +1,4 @@
-import java.util.Map;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputHelper {
@@ -42,21 +42,28 @@ public class InputHelper {
         return text;
     }
 
-    public static Language getValidLanguage(Map<String, Language> languageMap) {
-        Scanner scanner = new Scanner(System.in);
-        String languageChoice = "";
+    public static Language getValidLanguage(List<Language> languageList) {
+        int languageChoice = -1;
 
-        while (!languageMap.containsKey(languageChoice)) {
-            System.out.println(OutputHelper.getLanguageOptions(languageMap));
-            languageChoice = scanner.nextLine().trim();
+        while (languageChoice < 1 || languageChoice > languageList.size()) {
+            System.out.println(OutputHelper.getLanguageOptions(languageList));
+            String input = scanner.nextLine().trim();
 
-            if (!languageMap.containsKey(languageChoice)) {
-                System.out.println(OutputHelper.getInvalidIntInput(1, languageMap.size()));
+            try {
+                languageChoice = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println(OutputHelper.getInvalidIntInput(1, languageList.size()));
+                continue;
+            }
+
+            if (languageChoice < 1 || languageChoice > languageList.size()) {
+                System.out.println(OutputHelper.getInvalidIntInput(1, languageList.size()));
             }
         }
 
-        return languageMap.get(languageChoice);
+        return languageList.get(languageChoice - 1);
     }
+
 
     public static String getInputChoice(){
         int min = 1;
